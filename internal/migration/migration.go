@@ -27,6 +27,15 @@ import (
 var once sync.Once
 var out *output.Output = stdout.Out
 
+var testRepoRoot string
+
+func getRepositoryRoot() (string, error) {
+	if testRepoRoot != "" {
+		return testRepoRoot, nil
+	}
+	return root.RepositoryRoot()
+}
+
 // RunUp will migrate up the given number of steps.
 // If n is nil then all migrations are ran.
 func RunUp(database db.Database, n *int) error {
@@ -197,7 +206,7 @@ func RunAdd(database db.Database, migrationName string) (up, down string, _ erro
 // MigrationDirectoryForDatabase returns the directory where migration files are stored for the
 // given database.
 func MigrationDirectoryForDatabase(database db.Database) (string, error) {
-	repoRoot, err := root.RepositoryRoot()
+	repoRoot, err := getRepositoryRoot()
 	if err != nil {
 		return "", err
 	}
@@ -419,7 +428,7 @@ func getMigrationFilesFromDisk(database db.Database) ([]string, error) {
 }
 
 func findConflictingMigrations(mainMigrations, localMigrations map[int]migration) ([]migrationConflict, []migration, error) {
-	repoRoot, err := root.RepositoryRoot()
+	repoRoot, err := getRepositoryRoot()
 	if err != nil {
 		return nil, nil, err
 	}
@@ -543,7 +552,7 @@ func getMigrationsForFiles(files []string, existing map[int]migration) (map[int]
 }
 
 func isFileInRepo(path string, block *output.Block) error {
-	repoRoot, err := root.RepositoryRoot()
+	repoRoot, err := getRepositoryRoot()
 	if err != nil {
 		return err
 	}

@@ -98,7 +98,11 @@ func TestTrunkHasConflictingMigration(t *testing.T) {
 		},
 	}
 
-	conflicts, _, _ := findConflictingMigrations(trunk, branch)
+	conflicts, _, err := findConflictingMigrations(trunk, branch)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	expected := []migrationConflict{
 		{
 			ID:    2,
