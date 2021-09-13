@@ -11,6 +11,8 @@ builds:
   binary: sg
   ldflags:
     - -X main.BuildCommit={{.Commit}}
+  env:
+    - CGO_ENABLED=1
   goos:
     - linux
     - darwin
