@@ -1,2 +1,34 @@
+# sg binary
 sg
+
+# sg config
 sg.config.yaml
+
+# sg Google Cloud API OAuth token
+.sg.token.json
+
+# Vim
+*.swp
+
+# JetBrains/IntelliJ
+.idea
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.\#*
+.dir-locals.el
+
+# Go
+*.o
+*.a
+*.so
+
+# Mac OS X
+.DS_Store
+
+# env files
+.env
+.envrc
