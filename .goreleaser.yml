@@ -6,18 +6,32 @@ before:
   hooks:
     - go mod download
     - go mod tidy
+
 builds:
-- main: .
-  binary: sg
-  ldflags:
-    - -X main.BuildCommit={{.Commit}}
-  env:
-    - CGO_ENABLED=1
-  goos:
-    - linux
-    - darwin
-  goarch:
-    - amd64
+  - id: linux-build
+    main: .
+    binary: sg
+    ldflags:
+      - -X main.BuildCommit={{.Commit}}
+    env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+  - id: darwin-build
+    main: .
+    binary: sg
+    ldflags:
+      - -s
+      - -X main.BuildCommit={{.Commit}}
+    env:
+      - CGO_ENABLED=1
+      - CC=/home/runner/work/osxcross/target/bin/o64-clang
+      - CXX=/home/runner/work/osxcross/target/bin/o64-clang++
+    goos:
+      - darwin
+
 archives:
 - id: bin
   format: binary
