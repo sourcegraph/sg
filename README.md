@@ -50,7 +50,7 @@
 Run the following to install `sg` from inside `sourcegraph/sourcegraph`:
 
 ```
-./dev/sg/install.sh
+./install.sh
 ```
 
 Make sure that `$HOME/go/bin` is in your `$PATH`. (If you use `$GOPATH` then `$GOPATH/bin` needs to be in the `$PATH`)
@@ -86,7 +86,7 @@ This will boot the `default` commands in `sg.config.yaml` in the root of the rep
 In the root of `sourcegraph/sourcegraph`, run the following:
 
 ```
-go build -o ~/my/path/sg ./dev/sg
+go build -o ~/my/path/sg .
 ```
 
 Make sure that `~/my/path` is in your `$PATH` then.
@@ -311,11 +311,10 @@ specific to your work.
 
 ## Hacking
 
-When you want to hack on `sg` it's best to be in the `dev/sg` directory and run it from there:
+When you want to hack on `sg` it's best to be in this repository and run it from there, pointing at the `sg.config.yaml` in the `sourcegraph` repository:
 
 ```
-cd dev/sg
-go run . -config ../../sg.config.yaml start
+go run . -config ../sourcegraph/sg.config.yaml start
 ```
 
 The `-config` can be anything you want, of course.
