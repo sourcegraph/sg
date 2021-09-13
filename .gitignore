@@ -7,6 +7,9 @@ sg.config.yaml
 # sg Google Cloud API OAuth token
 .sg.token.json
 
+# Binary files
+dev/.bin
+
 # Vim
 *.swp
 
