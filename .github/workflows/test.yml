@@ -8,6 +8,7 @@ jobs:
     - name: Install SG (oneliner)
       shell: 'script -q out zsh {0} && cat out' # force TTY
       run: |
+        brew info
         curl --proto '=https' --tlsv1.2 -sSLf https://install.sg.dev > dl.sh
         yes | sh dl.sh
         sg version
