@@ -6,7 +6,7 @@ jobs:
     runs-on: macos-11
     steps:
     - name: Install SG (oneliner)
-      shell: 'script -q out "bash {0}" && cat out' # force TTY
+      shell: 'script -q out zsh {0} && cat out' # force TTY
       run: |
         curl --proto '=https' --tlsv1.2 -sSLf https://install.sg.dev > dl.sh
         yes | sh dl.sh
