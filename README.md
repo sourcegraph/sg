@@ -2,4 +2,4 @@
 
 This repository only contains binary releases for [sg, the Sourcegraph developer tool](https://github.com/sourcegraph/sourcegraph/tree/main/dev/sg#readme).
 
-Latest release: 2024-12-02-20-26
+Latest release: 2024-12-03-00-14
